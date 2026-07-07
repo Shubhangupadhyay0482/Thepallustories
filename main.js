@@ -1,10 +1,12 @@
 // Path to the new premium generated hero image
-const HERO_IMAGE_PATH = `${import.meta.env.BASE_URL || "/"}hero_accessories.jpg`;
+const HERO_IMAGE_PATH = "hero_accessories.jpg";
 
 // Elements for canvas scroll & cursor parallax
 const canvas = document.getElementById('scroll-canvas');
 const context = canvas.getContext('2d');
-
+const preloader = document.getElementById('preloader');
+const progressBar = document.getElementById('progress-bar');
+const loaderPercent = document.getElementById('loader-percent');
 
 // Elements for E-commerce Shop
 const productGrid = document.getElementById('product-grid');
@@ -246,9 +248,52 @@ const drawFrame = (fraction, mouseX, mouseY) => {
   
   context.drawImage(heroImage, offsetX - canvasWidth / 2, offsetY - canvasHeight / 2, drawWidth, drawHeight);
   context.restore();
+};// Preload canvas hero image
+const preloadImages = () => {
+  return new Promise((resolve) => {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 10;
+      progressBar.style.width = `${progress}%`;
+      if (loaderPercent) loaderPercent.textContent = `${progress}%`;
+      if (progress >= 50) clearInterval(interval);
+    }, 45);
+
+    heroImage = new Image();
+    
+    // Bind onload first
+    heroImage.onload = () => {
+      clearInterval(interval);
+      let finishProgress = progress;
+      const finishInterval = setInterval(() => {
+        finishProgress += 10;
+        if (finishProgress > 100) finishProgress = 100;
+        progressBar.style.width = `${finishProgress}%`;
+        if (loaderPercent) loaderPercent.textContent = `${finishProgress}%`;
+        
+        if (finishProgress === 100) {
+          clearInterval(finishInterval);
+          setTimeout(() => {
+            preloader.classList.add('fade-out');
+            document.body.style.overflow = 'auto';
+            resolve();
+          }, 600);
+        }
+      }, 20);
+    };
+    
+    // Bind onerror first
+    heroImage.onerror = () => {
+      clearInterval(interval);
+      preloader.classList.add('fade-out');
+      document.body.style.overflow = 'auto';
+      resolve();
+    };
+    
+    // Set src AFTER binding listeners!
+    heroImage.src = HERO_IMAGE_PATH;
+  });
 };
-
-
 
 // Animation tick loop
 const tick = () => {
@@ -1176,8 +1221,8 @@ const bindEvents = () => {
 const profileMenuContainer = document.getElementById('profile-menu-container');
 
 // Initialization
-const init = () => {
-  document.body.style.overflow = 'auto';
+const init = async () => {
+  document.body.style.overflow = 'hidden';
   resizeCanvas();
   
   // Seed Database & Session
@@ -1215,17 +1260,15 @@ const init = () => {
   setupDashboardTabs();
   setupRouter();
 
-  // Load hero image in the background
-  heroImage = new Image();
-  heroImage.onload = () => {
-    document.body.classList.add('canvas-loaded');
-    resizeCanvas();
-  };
-  heroImage.src = HERO_IMAGE_PATH;
+  // Load and wait for preloader
+  await preloadImages();
+  document.body.classList.add('canvas-loaded');
 
-  // Display products
-  renderProducts();
-  initScrollReveal();
+  // Display products with a slight fade stagger delay
+  setTimeout(() => {
+    renderProducts();
+    initScrollReveal();
+  }, 400);
 
   resizeCanvas();
   requestAnimationFrame(tick);

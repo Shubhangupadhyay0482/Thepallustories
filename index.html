@@ -103,11 +103,23 @@
       },
     }
   </script>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-tertiary/20 selection:text-tertiary paper-grain">
 
-
+  <!-- Preloader Screen -->
+  <div id="preloader" class="fixed inset-0 bg-background z-[9999] flex justify-center items-center transition-all duration-1000">
+    <div class="text-center w-[90%] max-w-[400px]">
+      <div class="overflow-hidden mb-sm">
+        <h1 class="font-display-lg text-[40px] text-primary italic preloader-title">The Pallu Stories</h1>
+      </div>
+      <p class="font-body-md text-on-surface-variant mb-md uppercase text-[10px] tracking-widest preloader-subtitle">Preparing the interactive boutique...</p>
+      <div class="h-[2px] w-full bg-outline-variant/20 rounded overflow-hidden mb-sm">
+        <div id="progress-bar" class="h-full bg-primary w-0 shadow-[0_0_8px_#775a19] transition-all duration-100"></div>
+      </div>
+      <div id="loader-percent" class="font-body-md text-primary font-bold text-sm">0%</div>
+    </div>
+  </div>
 
   <!-- TopNavBar -->
   <header id="main-header" class="text-secondary font-body-md fixed top-0 w-full z-50 transition-all duration-500 py-md border-b border-transparent">
@@ -826,6 +838,6 @@
     <span id="toast-message" class="text-xs uppercase tracking-wider font-semibold">Added to shopping bag</span>
   </div>
 
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>

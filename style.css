@@ -35,6 +35,35 @@ body {
 }
 
 /* Preloader custom styling */
+#preloader {
+  background-color: var(--bg-color);
+  transition: opacity 1s var(--easing), visibility 1s var(--easing);
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-title {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: preloaderIntro 1.2s var(--easing) forwards;
+}
+
+.preloader-subtitle {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: preloaderIntro 1.2s var(--easing) 0.2s forwards;
+}
+
+@keyframes preloaderIntro {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 
 /* Custom icons animation */
