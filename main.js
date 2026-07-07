@@ -1,12 +1,10 @@
 // Path to the new premium generated hero image
-const HERO_IMAGE_PATH = "/hero_accessories.jpg";
+const HERO_IMAGE_PATH = `${import.meta.env.BASE_URL || "/"}hero_accessories.jpg`;
 
 // Elements for canvas scroll & cursor parallax
 const canvas = document.getElementById('scroll-canvas');
 const context = canvas.getContext('2d');
-const preloader = document.getElementById('preloader');
-const progressBar = document.getElementById('progress-bar');
-const loaderPercent = document.getElementById('loader-percent');
+
 
 // Elements for E-commerce Shop
 const productGrid = document.getElementById('product-grid');
@@ -250,46 +248,7 @@ const drawFrame = (fraction, mouseX, mouseY) => {
   context.restore();
 };
 
-// Preload canvas hero image
-const preloadImages = () => {
-  return new Promise((resolve) => {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      progressBar.style.width = `${progress}%`;
-      loaderPercent.textContent = `${progress}%`;
-      if (progress >= 50) clearInterval(interval);
-    }, 45);
 
-    heroImage = new Image();
-    heroImage.src = HERO_IMAGE_PATH;
-    heroImage.onload = () => {
-      clearInterval(interval);
-      let finishProgress = progress;
-      const finishInterval = setInterval(() => {
-        finishProgress += 10;
-        if (finishProgress > 100) finishProgress = 100;
-        progressBar.style.width = `${finishProgress}%`;
-        loaderPercent.textContent = `${finishProgress}%`;
-        
-        if (finishProgress === 100) {
-          clearInterval(finishInterval);
-          setTimeout(() => {
-            preloader.classList.add('fade-out');
-            document.body.style.overflow = 'auto';
-            resolve();
-          }, 600);
-        }
-      }, 20);
-    };
-    heroImage.onerror = () => {
-      clearInterval(interval);
-      preloader.classList.add('fade-out');
-      document.body.style.overflow = 'auto';
-      resolve();
-    };
-  });
-};
 
 // Animation tick loop
 const tick = () => {
@@ -1217,8 +1176,8 @@ const bindEvents = () => {
 const profileMenuContainer = document.getElementById('profile-menu-container');
 
 // Initialization
-const init = async () => {
-  document.body.style.overflow = 'hidden';
+const init = () => {
+  document.body.style.overflow = 'auto';
   resizeCanvas();
   
   // Seed Database & Session
@@ -1229,7 +1188,7 @@ const init = async () => {
     updateAuthUI();
   }
   
-  // Preloader skeletons grid
+  // Skeletons list initially
   productGrid.innerHTML = `
     <div class="skeleton-card p-md border border-outline-variant/10 rounded">
       <div class="aspect-square bg-surface-variant/20 rounded animate-pulse mb-md"></div>
@@ -1256,14 +1215,17 @@ const init = async () => {
   setupDashboardTabs();
   setupRouter();
 
-  // Load and fade preloader
-  await preloadImages();
-  document.body.classList.add('canvas-loaded');
+  // Load hero image in the background
+  heroImage = new Image();
+  heroImage.onload = () => {
+    document.body.classList.add('canvas-loaded');
+    resizeCanvas();
+  };
+  heroImage.src = HERO_IMAGE_PATH;
 
-  setTimeout(() => {
-    renderProducts();
-    initScrollReveal();
-  }, 600);
+  // Display products
+  renderProducts();
+  initScrollReveal();
 
   resizeCanvas();
   requestAnimationFrame(tick);
