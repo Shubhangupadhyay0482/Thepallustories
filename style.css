@@ -1,0 +1,582 @@
+/* Custom styling for The Pallu Stories interactive site */
+
+:root {
+  --bg-color: #fcf9f4;
+  --primary-color: #775a19;
+  --secondary-color: #695c51;
+  --easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-speed: 0.8s;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+/* Paper Grain Texture Overlay */
+.paper-grain {
+  background-image: url("https://www.transparenttextures.com/patterns/felt-paper.png");
+}
+
+/* Decorative lines for titles */
+.decorative-line {
+  height: 1px;
+  width: 60px;
+  background: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+
+/* Preloader custom styling */
+#preloader {
+  background-color: var(--bg-color);
+  transition: opacity 1s var(--easing), visibility 1s var(--easing);
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-title {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: preloaderIntro 1.2s var(--easing) forwards;
+}
+
+.preloader-subtitle {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: preloaderIntro 1.2s var(--easing) 0.2s forwards;
+}
+
+@keyframes preloaderIntro {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Custom icons animation */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
+  transition: font-variation-settings 0.3s ease;
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* Sticky Shrinking Navigation */
+#main-header.scrolled {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(252, 249, 244, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom-color: rgba(119, 90, 25, 0.1);
+  box-shadow: 0 4px 30px rgba(74, 63, 53, 0.04);
+}
+
+/* Navigation links under-markers */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--easing);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Premium Button Hover Spread Animation */
+.btn-premium {
+  position: relative;
+  transition: all 0.4s var(--easing);
+  outline: 1px solid transparent;
+  outline-offset: 0px;
+}
+
+.btn-premium:hover {
+  background-color: var(--primary-color);
+  outline-color: var(--primary-color);
+  outline-offset: 6px;
+  letter-spacing: 0.25em;
+  box-shadow: 0 10px 30px rgba(119, 90, 25, 0.25);
+}
+
+/* Boutique Link Underlines */
+.btn-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--easing);
+}
+.btn-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Floating Animations for Decoratives */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float-delayed {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+/* Smooth Canvas fit and styling */
+#scroll-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ----------------------------------------------------
+   Scroll-Reveal Framework & SPA Page Transitions
+   ---------------------------------------------------- */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s var(--easing), transform 1.2s var(--easing);
+}
+
+.scroll-reveal.slide-left {
+  transform: translateX(-40px);
+}
+
+.scroll-reveal.slide-right {
+  transform: translateX(40px);
+}
+
+.scroll-reveal.scale-in {
+  transform: scale(0.96);
+}
+
+/* Active Reveal States */
+.scroll-reveal.in-view {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Apple-style Reveal Text Inside Lines */
+.reveal-text-line {
+  transform: translateY(100%);
+  transition: transform 1.2s var(--easing);
+  display: block;
+}
+
+.in-view .reveal-text-line {
+  transform: translateY(0);
+}
+
+/* Logo display reveal inside canvas */
+.reveal-logo {
+  transform: translateY(15px);
+  opacity: 0;
+  transition: transform 1.5s var(--easing), opacity 1.5s var(--easing);
+}
+
+.canvas-loaded .reveal-logo {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+/* Staggered Delay Tokens */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* SPA page view crossfade transitions */
+.page-view {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s var(--easing), transform 0.5s var(--easing);
+}
+
+.page-view.hidden {
+  display: none !important;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* ----------------------------------------------------
+   Authentication & Form Styling
+   ---------------------------------------------------- */
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.input-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--secondary-color);
+  margin-bottom: 0.4rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  border: 1px solid rgba(119, 90, 25, 0.15);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--secondary-color);
+  transition: all 0.3s var(--easing);
+}
+
+.input-field:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(119, 90, 25, 0.08);
+}
+
+.input-error {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: #b91c1c;
+  margin-top: 0.3rem;
+  min-height: 15px;
+  display: block;
+}
+
+.social-btn {
+  transition: all 0.3s var(--easing);
+}
+.social-btn:hover {
+  background-color: var(--surface-container-low);
+  border-color: var(--primary-color);
+}
+
+/* Profile Dropdown Styling */
+#profile-dropdown.open {
+  display: block !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  transition: all 0.25s var(--easing);
+}
+
+.dropdown-item:hover {
+  background-color: var(--surface-container-low);
+  color: var(--primary-color);
+}
+
+/* ----------------------------------------------------
+   Account Dashboard Specific Styling
+   ---------------------------------------------------- */
+
+.dash-tab-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  border-left: 2px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s var(--easing);
+}
+
+.dash-tab-btn:hover {
+  background-color: var(--surface-container-low);
+  color: var(--primary-color);
+}
+
+.dash-tab-btn.active {
+  background-color: var(--surface-container-low);
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.detail-block {
+  padding: 1rem;
+  background-color: var(--surface-container-low);
+  border: 1px solid rgba(119, 90, 25, 0.08);
+  border-radius: 4px;
+}
+
+.detail-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.detail-value {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+/* Order timeline process tracker */
+.timeline-step {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+
+.timeline-step::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(119, 90, 25, 0.15);
+  z-index: 1;
+}
+
+.timeline-step:last-child::after {
+  display: none;
+}
+
+.step-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  border: 2px solid rgba(119, 90, 25, 0.3);
+  margin: 0 auto 6px auto;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s var(--easing);
+}
+
+.timeline-step.active .step-dot {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(119, 90, 25, 0.2);
+}
+
+.timeline-step.completed .step-dot {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.timeline-step.completed::after {
+  background-color: var(--secondary-color);
+}
+
+.step-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.timeline-step.active .step-label {
+  color: var(--primary-color);
+}
+
+/* ----------------------------------------------------
+   E-commerce Layouts & Hover States
+   ---------------------------------------------------- */
+
+/* Filter Chips styling */
+.filter-chip {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(119, 90, 25, 0.15);
+  background-color: transparent;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.3s var(--easing);
+}
+
+.filter-chip:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.filter-chip.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(119, 90, 25, 0.2);
+}
+
+/* Product Cards layout */
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(119, 90, 25, 0.06);
+  box-shadow: 0 4px 15px rgba(74, 63, 53, 0.01);
+  transition: transform 0.5s var(--easing), box-shadow 0.5s var(--easing), border-color 0.5s var(--easing);
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(74, 63, 53, 0.07);
+  border-color: rgba(119, 90, 25, 0.2);
+}
+
+/* Product Card Secondary Image Swap on Hover */
+.product-image-primary {
+  transition: opacity 0.6s var(--easing);
+}
+
+.product-image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s var(--easing), transform 0.6s var(--easing);
+}
+
+.product-card:hover .product-image-hover {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.product-card:hover .product-image-primary {
+  opacity: 0;
+}
+
+/* Shopping Cart Badge Spring Pop animation */
+@keyframes badge-spring {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.animate-spring {
+  animation: badge-spring 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Slide out Cart Drawer styling */
+#cart-drawer {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
+  transition: transform 0.5s var(--easing);
+}
+
+/* Show cart class triggers slide in */
+#cart-drawer.open {
+  transform: translateX(0);
+}
+
+body.cart-open {
+  overflow: hidden;
+}
+
+/* Toast trigger transition */
+#toast-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Quick View Modal Display Transitions */
+#quickview-modal {
+  transition: opacity 0.3s var(--easing);
+}
+
+#quickview-modal.open {
+  display: flex !important;
+  opacity: 1;
+}
+
+#quickview-modal.open > div {
+  transform: scale(1);
+}
+
+/* Skeleton Loading slots animation */
+.skeleton-card {
+  background-color: #ffffff;
+}
+
+/* Subtle image-hover parallax effect container */
+.hover-parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-parallax-container img {
+  transform: scale(1.03);
+  transition: transform 1.5s var(--easing);
+}
+
+.hover-parallax-container:hover img {
+  transform: scale(1.07) translateY(-3px);
+}

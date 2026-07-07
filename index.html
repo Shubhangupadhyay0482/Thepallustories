@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Pallu Stories | Curated Women's Accessories</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "tertiary": "#964824", // Terracotta
+            "on-secondary-container": "#6f6257",
+            "tertiary-fixed-dim": "#ffb597",
+            "on-primary-container": "#4e3700",
+            "secondary-fixed": "#f1dfd1",
+            "on-secondary": "#ffffff",
+            "surface": "#fcf9f4", // Sand/Paper white
+            "secondary": "#695c51", // Espresso/Deep wood
+            "primary": "#775a19", // Gold/Brass
+            "surface-container-low": "#f6f3ee",
+            "surface-dim": "#dcdad5",
+            "primary-fixed": "#ffdea5",
+            "surface-bright": "#fcf9f4",
+            "on-surface-variant": "#4e4639",
+            "surface-variant": "#e5e2dd",
+            "on-background": "#1c1c19",
+            "tertiary-container": "#ec8d62",
+            "inverse-primary": "#e9c176",
+            "on-primary-fixed": "#261900",
+            "surface-container": "#f0ede9",
+            "on-secondary-fixed": "#231a11",
+            "surface-tint": "#775a19",
+            "tertiary-fixed": "#ffdbcd",
+            "on-tertiary-container": "#682604",
+            "secondary-fixed-dim": "#d4c4b6",
+            "on-error-container": "#93000a",
+            "on-surface": "#1c1c19",
+            "outline-variant": "#d1c5b4",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#f1dfd1",
+            "primary-container": "#c5a059",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#50453b",
+            "background": "#f5f2ed", // Slightly warmer sand
+            "primary-fixed-dim": "#e9c176",
+            "on-primary": "#ffffff",
+            "outline": "#7f7667",
+            "surface-container-highest": "#e5e2dd",
+            "surface-container-high": "#ebe8e3",
+            "on-primary-fixed-variant": "#5d4201",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#31302d",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#77320e",
+            "inverse-on-surface": "#f3f0eb",
+            "on-tertiary-fixed": "#360f00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin_mobile": "16px",
+            "gutter": "32px",
+            "sm": "8px",
+            "unit": "4px",
+            "xl": "64px",
+            "lg": "32px",
+            "md": "20px",
+            "xxl": "100px",
+            "xs": "4px",
+            "container_max": "1200px"
+          },
+          "fontFamily": {
+            "display-lg": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-md": ["Montserrat"],
+            "headline-sm": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "body-lg": ["Montserrat"],
+            "button": ["Montserrat"],
+            "label-caps": ["Montserrat"]
+          },
+          "fontSize": {
+            "display-lg": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "1.7", "fontWeight": "400" }],
+            "headline-sm": ["28px", { "lineHeight": "1.4", "fontWeight": "500" }],
+            "headline-md": ["36px", { "lineHeight": "1.3", "fontWeight": "500" }],
+            "body-lg": ["20px", { "lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "button": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-tertiary/20 selection:text-tertiary paper-grain">
+
+  <!-- Preloader Screen -->
+  <div id="preloader" class="fixed inset-0 bg-background z-[9999] flex justify-center items-center transition-all duration-1000">
+    <div class="text-center w-[90%] max-w-[400px]">
+      <div class="overflow-hidden mb-sm">
+        <h1 class="font-display-lg text-[40px] text-primary italic preloader-title">The Pallu Stories</h1>
+      </div>
+      <p class="font-body-md text-on-surface-variant mb-md uppercase text-[10px] tracking-widest preloader-subtitle">Preparing the interactive boutique...</p>
+      <div class="h-[2px] w-full bg-outline-variant/20 rounded overflow-hidden mb-sm">
+        <div id="progress-bar" class="h-full bg-primary w-0 shadow-[0_0_8px_#775a19] transition-all duration-100"></div>
+      </div>
+      <div id="loader-percent" class="font-body-md text-primary font-bold text-sm">0%</div>
+    </div>
+  </div>
+
+  <!-- TopNavBar -->
+  <header id="main-header" class="text-secondary font-body-md fixed top-0 w-full z-50 transition-all duration-500 py-md border-b border-transparent">
+    <div class="flex justify-between items-center px-lg max-w-container_max mx-auto relative">
+      <a class="font-display-lg text-headline-md italic tracking-tight text-secondary transition-transform duration-300 hover:scale-102 route-trigger" data-route="home" href="#home">The Pallu Stories</a>
+      <nav class="hidden md:flex space-x-lg uppercase text-[11px] font-semibold tracking-widest">
+        <a class="nav-link text-on-surface-variant hover:text-tertiary transition-colors route-trigger" data-route="home" href="#shop">Shop</a>
+        <a class="nav-link text-on-surface-variant hover:text-tertiary transition-colors route-trigger" data-route="home" href="#curated-sections">Collections</a>
+        <a class="nav-link text-on-surface-variant hover:text-tertiary transition-colors route-trigger" data-route="home" href="#shop">Accessories</a>
+        <a class="nav-link text-on-surface-variant hover:text-tertiary transition-colors route-trigger" data-route="home" href="#footer">Our Story</a>
+      </nav>
+      <div class="flex items-center space-x-md">
+        <!-- Guest Profile Trigger / User Dropdown Container -->
+        <div class="relative" id="profile-menu-container">
+          <!-- Profile Button -->
+          <button class="text-on-surface-variant hover:text-tertiary transition-all active:scale-90 flex items-center gap-1" id="profile-btn" aria-label="Profile Account Menu">
+            <span class="material-symbols-outlined text-[20px]" id="profile-icon">person</span>
+            <!-- User avatar container (hidden by default) -->
+            <span class="w-6 h-6 rounded-full bg-primary text-on-primary text-[10px] font-bold hidden items-center justify-center border border-outline-variant/30" id="profile-avatar">AS</span>
+          </button>
+          
+          <!-- Dropdown Menu Card (hidden by default) -->
+          <div class="absolute right-0 mt-3 w-52 bg-surface border border-outline-variant/30 rounded shadow-xl py-2 z-50 hidden opacity-0 translate-y-2 transition-all duration-300 var(--easing)" id="profile-dropdown">
+            <div class="px-4 py-2 border-b border-outline-variant/20 mb-1">
+              <p class="text-xs text-on-surface-variant font-medium">Logged in as</p>
+              <p class="text-xs text-secondary font-bold truncate" id="dropdown-email">guest@pallustories.com</p>
+            </div>
+            <a class="dropdown-item" href="#dashboard" data-tab="profile"><span class="material-symbols-outlined text-sm">person</span>My Profile</a>
+            <a class="dropdown-item" href="#dashboard" data-tab="orders"><span class="material-symbols-outlined text-sm">local_shipping</span>Track Orders</a>
+            <a class="dropdown-item" href="#dashboard" data-tab="wishlist"><span class="material-symbols-outlined text-sm">favorite</span>Wishlist</a>
+            <a class="dropdown-item" href="#dashboard" data-tab="addresses"><span class="material-symbols-outlined text-sm">home_pin</span>Addresses</a>
+            <a class="dropdown-item" href="#dashboard" data-tab="settings"><span class="material-symbols-outlined text-sm">settings</span>Settings</a>
+            <div class="h-px bg-outline-variant/20 my-1"></div>
+            <button class="dropdown-item w-full text-left text-red-700 hover:bg-red-50/50" id="dropdown-logout-btn"><span class="material-symbols-outlined text-sm">logout</span>Logout</button>
+          </div>
+        </div>
+
+        <button class="text-on-surface-variant hover:text-tertiary transition-all active:scale-90" aria-label="Favorites" id="nav-wishlist-btn">
+          <span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+        </button>
+        <button class="text-secondary hover:text-tertiary transition-all relative flex items-center active:scale-90" id="cart-btn" aria-label="Shopping Bag">
+          <span class="material-symbols-outlined text-[20px]" data-icon="shopping_bag">shopping_bag</span>
+          <span class="absolute -top-1.5 -right-1.5 bg-tertiary text-on-tertiary text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= PAGE VIEW: HOME ================= -->
+  <main class="page-view" id="view-home">
+    
+    <!-- Hero Lookbook Section -->
+    <section class="relative min-h-[95vh] w-full flex items-center overflow-hidden py-xl">
+      <!-- Decorative floating circles -->
+      <div class="absolute w-72 h-72 rounded-full bg-secondary-container/20 blur-[80px] top-10 left-10 animate-float pointer-events-none"></div>
+      <div class="absolute w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] bottom-10 right-10 animate-float-delayed pointer-events-none"></div>
+
+      <div class="max-w-container_max mx-auto px-margin_mobile md:px-lg grid grid-cols-1 md:grid-cols-12 gap-lg items-center">
+        <!-- Hero Text Content -->
+        <div class="md:col-span-5 z-10 order-2 md:order-1 mt-lg md:mt-0">
+          <div class="mb-md flex items-center space-x-md scroll-reveal delay-100">
+            <span class="decorative-line"></span>
+            <span class="font-label-caps text-tertiary uppercase tracking-[0.2em]">Curated Dropship Collection</span>
+          </div>
+          
+          <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-secondary mb-md leading-[1.05] scroll-reveal delay-200">
+            <span class="overflow-hidden block py-1">
+              <span class="italic font-normal block reveal-text-line">Bespoke Women's</span>
+            </span>
+            <span class="overflow-hidden block py-1">
+              <span class="block reveal-text-line">Accessories</span>
+            </span>
+          </h1>
+          
+          <p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-md border-l-2 border-tertiary/20 pl-lg py-sm italic scroll-reveal delay-300">
+            "Curated accessory drops, shipped directly to you. Discover our signature leather handbags, custom brass keychains, and hand-threaded bracelets designed to elevate your everyday aesthetic."
+          </p>
+          <div class="scroll-reveal delay-400">
+            <a class="btn-premium inline-block px-xl py-md bg-secondary text-on-secondary font-button uppercase tracking-[0.2em] shadow-lg shadow-secondary/10" href="#shop">
+              Explore Collection
+            </a>
+          </div>
+        </div>
+        
+        <!-- Hero Image Content (Interactive Canvas) -->
+        <div class="md:col-span-7 relative order-1 md:order-2 h-[500px] md:h-[700px] overflow-hidden group scroll-reveal scale-in">
+          <div class="absolute inset-0 bg-secondary/5 -translate-x-6 translate-y-6 z-0"></div>
+          <canvas id="scroll-canvas" class="w-full h-full object-cover z-10 relative shadow-2xl bg-surface-container-low transition-all duration-300"></canvas>
+          <div class="absolute top-12 left-12 z-20 pointer-events-none select-none overflow-hidden">
+            <h3 class="font-display-lg text-[32px] md:text-[40px] text-secondary leading-none italic font-medium opacity-90 reveal-logo">
+              The<br>Pallu<br>Stories
+            </h3>
+          </div>
+          <div class="absolute -bottom-10 -left-10 bg-surface p-lg shadow-xl hidden md:block border border-outline-variant/20 z-20 animate-float">
+            <p class="font-display-lg italic text-headline-sm text-tertiary">01</p>
+            <p class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">The Origin Story</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curated Lookbook Grid -->
+    <section id="curated-sections" class="py-xxl bg-surface/50 border-y border-outline-variant/10">
+      <div class="max-w-container_max mx-auto px-margin_mobile md:px-lg">
+        <div class="flex flex-col items-center mb-xl text-center scroll-reveal">
+          <span class="font-label-caps text-primary mb-xs">Selection 2024</span>
+          <h2 class="font-headline-md text-headline-md text-secondary">Curated Categories</h2>
+          <div class="h-0.5 w-12 bg-tertiary mt-md"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-xl">
+          <div class="md:col-span-5 relative group scroll-reveal slide-left delay-100">
+            <div class="overflow-hidden aspect-[3/4] bg-surface-container rounded-sm shadow-sm hover-parallax-container">
+              <img class="w-full h-full object-cover" data-alt="Close up of a premium brown leather handbag." src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=800"/>
+            </div>
+            <div class="mt-lg">
+              <h3 class="font-headline-sm text-secondary italic mb-sm">Woven Handbags</h3>
+              <p class="text-on-surface-variant text-sm mb-md max-w-xs leading-relaxed">Traditional craftsmanship meets contemporary style. Luxury leather totes and shoulder bags.</p>
+              <a class="inline-flex items-center text-tertiary font-button text-[12px] group relative py-1 overflow-hidden btn-underline" href="#shop" onclick="filterCategory('Handbags')">
+                Explore Chapter <span class="material-symbols-outlined ml-xs transition-transform group-hover:translate-x-1.5" data-icon="east">east</span>
+              </a>
+            </div>
+          </div>
+          
+          <div class="md:col-span-7 flex flex-col justify-center space-y-xl">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-lg items-center scroll-reveal slide-right delay-200">
+              <div class="overflow-hidden aspect-square md:aspect-[4/5] bg-surface-container rounded-sm shadow-sm hover-parallax-container">
+                <img class="w-full h-full object-cover" data-alt="A beautiful stack of gold and beaded bracelets." src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800"/>
+              </div>
+              <div class="pl-sm">
+                <span class="font-label-caps text-tertiary mb-xs block">Volume II</span>
+                <h3 class="font-headline-sm text-secondary mb-sm">Fine Bracelets</h3>
+                <p class="text-on-surface-variant text-sm mb-md leading-relaxed">Hand-threaded beaded and chain bracelets made to stack together.</p>
+                <a class="text-secondary hover:text-tertiary text-xs font-bold border-b border-secondary/20 pb-1 transition-all inline-block hover-lift-short" href="#shop" onclick="filterCategory('Bracelets')">Discover Piece</a>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-lg items-center scroll-reveal slide-right delay-300">
+              <div class="order-1 sm:order-2 overflow-hidden aspect-square md:aspect-[4/5] bg-surface-container rounded-sm shadow-sm hover-parallax-container">
+                <img class="w-full h-full object-cover" data-alt="Bespoke leather keychains on a desk." src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800"/>
+              </div>
+              <div class="order-2 sm:order-1 text-left sm:text-right font-sans pr-sm">
+                <span class="font-label-caps text-tertiary mb-xs block">Volume III</span>
+                <h3 class="font-headline-sm text-secondary mb-sm">Bespoke Keychains</h3>
+                <p class="text-on-surface-variant text-sm mb-md leading-relaxed">Earthy tassels, custom engraving, and solid brass detailing.</p>
+                <a class="text-secondary hover:text-tertiary text-xs font-bold border-b border-secondary/20 pb-1 transition-all inline-block hover-lift-short" href="#shop" onclick="filterCategory('Keychains')">Discover Piece</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive E-commerce Shop Grid Section -->
+    <section id="shop" class="py-xxl bg-surface/30">
+      <div class="max-w-container_max mx-auto px-margin_mobile md:px-lg">
+        <div class="flex flex-col items-center mb-xl text-center scroll-reveal">
+          <span class="font-label-caps text-primary mb-xs">Shop Our Accessories</span>
+          <h2 class="font-display-lg text-display-lg-mobile md:text-headline-md text-secondary">The Collection</h2>
+          <div class="h-0.5 w-12 bg-tertiary mt-md"></div>
+          
+          <div class="flex flex-wrap justify-center gap-sm mt-lg" id="filter-chips">
+            <button class="filter-chip active" data-category="All">All Items</button>
+            <button class="filter-chip" data-category="Keychains">Keychains</button>
+            <button class="filter-chip" data-category="Bracelets">Bracelets</button>
+            <button class="filter-chip" data-category="Handbags">Handbags</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-lg" id="product-grid">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-secondary-container text-on-secondary-container font-body-md py-xxl paper-grain border-t border-tertiary/10">
+      <div class="max-w-container_max mx-auto px-lg scroll-reveal">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-xl">
+          <div class="md:col-span-2">
+            <h4 class="font-display-lg text-headline-md italic text-secondary mb-md">The Pallu Stories</h4>
+            <p class="text-on-secondary-fixed-variant opacity-80 text-sm max-w-sm mb-lg leading-relaxed">A carefully curated destination for modern women's accessories. We partner directly with skilled makers to dropship high-quality keychains, bracelets, and handbags directly to your door, offering luxury style without the luxury markup.</p>
+            <div class="flex space-x-md">
+              <a class="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-on-secondary hover:scale-105 transition-all" href="#" aria-label="Share">
+                <span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+              </a>
+              <a class="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center hover:bg-secondary hover:text-on-secondary hover:scale-105 transition-all" href="#" aria-label="Mail">
+                <span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-md">
+            <p class="font-label-caps text-secondary mb-xs">Experience</p>
+            <a class="text-on-secondary-fixed-variant hover:text-tertiary transition-all text-sm hover-lift-short" href="#">Sustainability</a>
+            <a class="text-on-secondary-fixed-variant hover:text-tertiary transition-all text-sm hover-lift-short" href="#">Craftsmanship</a>
+            <a class="text-on-secondary-fixed-variant hover:text-tertiary transition-all text-sm hover-lift-short" href="#">Our Workshops</a>
+          </div>
+          <div class="flex flex-col space-y-md">
+            <p class="font-label-caps text-secondary mb-xs">Support</p>
+            <a class="text-on-secondary-fixed-variant hover:text-tertiary transition-all text-sm hover-lift-short" href="#">Shipping &amp; Returns</a>
+            <a class="text-on-secondary-fixed-variant hover:text-tertiary transition-all text-sm hover-lift-short" href="#">Privacy Policy</a>
+            <a class="text-on-secondary-fixed-variant hover:text-tertiary transition-all text-sm hover-lift-short" href="#">Terms &amp; Conditions</a>
+          </div>
+        </div>
+        <div class="mt-xxl pt-lg border-t border-outline-variant/30 text-center">
+          <p class="text-[10px] uppercase tracking-[0.3em] text-on-secondary-fixed-variant/60">© 2024 The Pallu Stories — Accessories & Boutique. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ================= PAGE VIEW: LOGIN ================= -->
+  <main class="page-view hidden min-h-[90vh] flex items-center justify-center py-xxl px-margin_mobile" id="view-login">
+    <div class="bg-surface max-w-[450px] w-full p-lg md:p-xl rounded shadow-2xl border border-outline-variant/20 relative z-10 transition-transform duration-500 var(--easing)">
+      <div class="text-center mb-lg">
+        <h2 class="font-display-lg text-3xl text-secondary italic mb-xs">Welcome Back</h2>
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant">Sign in to your Pallu account</p>
+      </div>
+
+      <!-- Demo Quick Login Tooltip -->
+      <div class="mb-md bg-surface-container-low border border-primary/20 rounded p-sm text-xs flex justify-between items-center">
+        <div class="text-on-surface-variant">
+          <span class="font-bold text-primary">Demo Account:</span> guest@pallustories.com
+        </div>
+        <button class="text-tertiary font-bold hover:underline" id="demo-login-btn">Auto-Fill</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="space-y-md">
+        <div class="input-group">
+          <label class="input-label" for="login-email">Email Address</label>
+          <input class="input-field" type="email" id="login-email" required placeholder="name@domain.com" />
+          <span class="input-error" id="login-email-error"></span>
+        </div>
+        <div class="input-group relative">
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="input-label mb-0" for="login-password">Password</label>
+            <a class="text-[10px] uppercase tracking-widest font-bold text-tertiary hover:text-secondary route-trigger" data-route="forgot" href="#forgot">Forgot?</a>
+          </div>
+          <div class="relative">
+            <input class="input-field pr-10" type="password" id="login-password" required placeholder="••••••••" />
+            <button type="button" class="password-toggle absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-secondary" aria-label="Toggle Password Visibility">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+            </button>
+          </div>
+          <span class="input-error" id="login-password-error"></span>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-on-surface-variant font-body-md pt-sm">
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" id="login-remember" class="rounded text-primary border-outline-variant focus:ring-primary bg-background w-4 h-4" />
+            <span>Remember Me</span>
+          </label>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-secondary text-on-secondary font-button uppercase tracking-[0.2em] hover:bg-tertiary transition-all duration-300 shadow-md mt-lg" id="login-submit-btn">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="relative flex py-5 items-center">
+        <div class="flex-grow border-t border-outline-variant/20"></div>
+        <span class="flex-shrink mx-4 text-[10px] uppercase tracking-widest text-on-surface-variant/50">Or Continue With</span>
+        <div class="flex-grow border-t border-outline-variant/20"></div>
+      </div>
+
+      <!-- Social Logins -->
+      <div class="grid grid-cols-2 gap-md mb-lg">
+        <button class="social-btn flex items-center justify-center gap-sm py-2.5 border border-outline-variant/30 rounded text-xs text-secondary hover:bg-surface-container-low transition-colors" id="login-google-btn">
+          <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          Google
+        </button>
+        <button class="social-btn flex items-center justify-center gap-sm py-2.5 border border-outline-variant/30 rounded text-xs text-secondary hover:bg-surface-container-low transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.494 0-1.11.385-1.428.771-.321.385-.548.969-.475 1.544.558.043 1.144-.321 1.464-.754.306-.385.503-.94.439-1.561M13.629 8.78c-.274-.183-.699-.462-1.233-.462-.832 0-1.503.528-1.503.528s-.361-.264-.799-.264c-.643 0-1.218.423-1.439.699-.54.673-.623 1.956-.168 2.76.326.577.892 1.255 1.469 1.255.459 0 .736-.264 1.173-.264.444 0 .7.264 1.178.264.633 0 1.109-.619 1.423-1.183.399-.711.459-1.745.195-2.222-.091-.168-.429-.822-.728-1.077M12.062 16c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5 4.5 2.016 4.5 4.5-2.016 4.5-4.5 4.5"/></svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="text-center text-xs text-on-surface-variant">
+        Don't have an account? 
+        <a class="text-tertiary font-bold hover:underline route-trigger" data-route="signup" href="#signup">Create Account</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= PAGE VIEW: SIGN UP ================= -->
+  <main class="page-view hidden min-h-[90vh] flex items-center justify-center py-xxl px-margin_mobile" id="view-signup">
+    <div class="bg-surface max-w-[500px] w-full p-lg md:p-xl rounded shadow-2xl border border-outline-variant/20 relative z-10 transition-transform duration-500 var(--easing)">
+      <div class="text-center mb-lg">
+        <h2 class="font-display-lg text-3xl text-secondary italic mb-xs">Create Account</h2>
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant">Join the Pallu boutique circle</p>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="signup-form" class="space-y-md">
+        <div class="input-group">
+          <label class="input-label" for="signup-name">Full Name</label>
+          <input class="input-field" type="text" id="signup-name" required placeholder="Aria Sharma" />
+          <span class="input-error" id="signup-name-error"></span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+          <div class="input-group">
+            <label class="input-label" for="signup-email">Email Address</label>
+            <input class="input-field" type="email" id="signup-email" required placeholder="name@domain.com" />
+            <span class="input-error" id="signup-email-error"></span>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="signup-phone">Phone Number (Optional)</label>
+            <input class="input-field" type="tel" id="signup-phone" placeholder="+1 (555) 000-0000" />
+            <span class="input-error" id="signup-phone-error"></span>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+          <div class="input-group relative">
+            <label class="input-label" for="signup-password">Password</label>
+            <div class="relative">
+              <input class="input-field pr-10" type="password" id="signup-password" required placeholder="••••••••" />
+              <button type="button" class="password-toggle absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-secondary" aria-label="Toggle Password Visibility">
+                <span class="material-symbols-outlined text-[18px]">visibility</span>
+              </button>
+            </div>
+            <span class="input-error" id="signup-password-error"></span>
+          </div>
+          <div class="input-group relative">
+            <label class="input-label" for="signup-confirm">Confirm Password</label>
+            <div class="relative">
+              <input class="input-field pr-10" type="password" id="signup-confirm" required placeholder="••••••••" />
+              <button type="button" class="password-toggle absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-secondary" aria-label="Toggle Password Visibility">
+                <span class="material-symbols-outlined text-[18px]">visibility</span>
+              </button>
+            </div>
+            <span class="input-error" id="signup-confirm-error"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start text-xs text-on-surface-variant font-body-md pt-sm">
+          <label class="flex items-start space-x-2 cursor-pointer">
+            <input type="checkbox" id="signup-terms" required class="rounded text-primary border-outline-variant focus:ring-primary bg-background w-4 h-4 mt-0.5" />
+            <span class="leading-snug">I accept the <a href="#" class="text-tertiary underline">Terms & Conditions</a> and consent to the privacy policy.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-secondary text-on-secondary font-button uppercase tracking-[0.2em] hover:bg-tertiary transition-all duration-300 shadow-md mt-lg" id="signup-submit-btn">
+          Create Account
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="relative flex py-5 items-center">
+        <div class="flex-grow border-t border-outline-variant/20"></div>
+        <span class="flex-shrink mx-4 text-[10px] uppercase tracking-widest text-on-surface-variant/50">Or Sign Up With</span>
+        <div class="flex-grow border-t border-outline-variant/20"></div>
+      </div>
+
+      <button class="w-full social-btn flex items-center justify-center gap-sm py-2.5 border border-outline-variant/30 rounded text-xs text-secondary hover:bg-surface-container-low transition-colors mb-lg" id="signup-google-btn">
+        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="text-center text-xs text-on-surface-variant">
+        Already have an account? 
+        <a class="text-tertiary font-bold hover:underline route-trigger" data-route="login" href="#login">Sign In</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= PAGE VIEW: FORGOT PASSWORD ================= -->
+  <main class="page-view hidden min-h-[90vh] flex items-center justify-center py-xxl px-margin_mobile" id="view-forgot">
+    <div class="bg-surface max-w-[450px] w-full p-lg md:p-xl rounded shadow-2xl border border-outline-variant/20 relative z-10 transition-transform duration-500 var(--easing)">
+      
+      <!-- Screen 1: Request Password Form -->
+      <div id="forgot-form-screen">
+        <div class="text-center mb-lg">
+          <h2 class="font-display-lg text-3xl text-secondary italic mb-xs">Recover Password</h2>
+          <p class="text-xs uppercase tracking-widest text-on-surface-variant">We'll email you a secure reset link</p>
+        </div>
+
+        <form id="forgot-form" class="space-y-md">
+          <div class="input-group">
+            <label class="input-label" for="forgot-email">Email Address</label>
+            <input class="input-field" type="email" id="forgot-email" required placeholder="name@domain.com" />
+            <span class="input-error" id="forgot-email-error"></span>
+          </div>
+          <button type="submit" class="w-full py-3 bg-secondary text-on-secondary font-button uppercase tracking-[0.2em] hover:bg-tertiary transition-all duration-300 shadow-md mt-lg" id="forgot-submit-btn">
+            Send Reset Link
+          </button>
+        </form>
+        
+        <div class="text-center text-xs text-on-surface-variant mt-lg">
+          Back to 
+          <a class="text-tertiary font-bold hover:underline route-trigger" data-route="login" href="#login">Sign In</a>
+        </div>
+      </div>
+
+      <!-- Screen 2: Success Screen -->
+      <div id="forgot-success-screen" class="hidden text-center py-sm space-y-md">
+        <span class="material-symbols-outlined text-[64px] text-primary animate-float mb-md">mark_email_read</span>
+        <h3 class="font-display-lg text-2xl text-secondary italic">Reset Link Sent</h3>
+        <p class="text-sm text-on-surface-variant leading-relaxed font-body-md">
+          We've sent a password recovery link to <span class="font-bold text-secondary" id="forgot-target-email">email@domain.com</span>. Please check your spam folder if it doesn't arrive.
+        </p>
+        <button class="w-full py-3 bg-secondary text-on-secondary font-button uppercase tracking-[0.2em] hover:bg-tertiary transition-all duration-300 shadow-md mt-lg route-trigger" data-route="login" href="#login" id="forgot-back-btn">
+          Return to Sign In
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= PAGE VIEW: USER DASHBOARD ================= -->
+  <main class="page-view hidden min-h-[90vh] py-xxl px-margin_mobile md:px-lg" id="view-dashboard">
+    <div class="max-w-container_max mx-auto">
+      
+      <!-- Dashboard Title Block -->
+      <div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md border-b border-outline-variant/30 pb-lg scroll-reveal in-view">
+        <div>
+          <span class="font-label-caps text-primary mb-xs block">Welcome back</span>
+          <h2 class="font-display-lg text-3xl md:text-4xl text-secondary italic" id="dash-greeting-name">Aria Sharma</h2>
+        </div>
+        <button class="py-2 px-6 border border-secondary text-secondary font-button uppercase tracking-widest text-[11px] hover:bg-secondary hover:text-on-secondary transition-all" id="dash-logout-btn">
+          Log Out
+        </button>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
+        
+        <!-- Sidebar Navigation Menu -->
+        <aside class="md:col-span-3 space-y-2 bg-surface p-md rounded shadow-sm border border-outline-variant/15">
+          <button class="dash-tab-btn active" data-tab="profile">
+            <span class="material-symbols-outlined text-[20px]">person</span>Profile Details
+          </button>
+          <button class="dash-tab-btn" data-tab="orders">
+            <span class="material-symbols-outlined text-[20px]">local_shipping</span>Order History
+          </button>
+          <button class="dash-tab-btn animate-wish-icon" data-tab="wishlist">
+            <span class="material-symbols-outlined text-[20px]">favorite</span>Wishlist
+          </button>
+          <button class="dash-tab-btn" data-tab="addresses">
+            <span class="material-symbols-outlined text-[20px]">home_pin</span>Saved Addresses
+          </button>
+          <button class="dash-tab-btn" data-tab="payment">
+            <span class="material-symbols-outlined text-[20px]">credit_card</span>Payment Methods
+          </button>
+          <button class="dash-tab-btn" data-tab="notifications">
+            <span class="material-symbols-outlined text-[20px]">notifications</span>Notifications
+          </button>
+          <button class="dash-tab-btn" data-tab="settings">
+            <span class="material-symbols-outlined text-[20px]">lock_reset</span>Security
+          </button>
+        </aside>
+
+        <!-- Dynamic Content Panel -->
+        <div class="md:col-span-9 bg-surface p-lg md:p-xl rounded shadow-sm border border-outline-variant/15 min-h-[480px]">
+          
+          <!-- TAB: Profile Details -->
+          <div class="dash-tab-content space-y-lg" id="tab-profile">
+            <div class="flex justify-between items-center border-b border-outline-variant/20 pb-sm">
+              <h3 class="font-headline-sm text-secondary">Profile Details</h3>
+              <button class="text-tertiary font-bold text-xs uppercase tracking-widest hover:underline flex items-center gap-1" id="profile-edit-toggle">
+                <span class="material-symbols-outlined text-sm">edit</span>Edit Profile
+              </button>
+            </div>
+
+            <!-- View Profile Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-lg" id="profile-view-state">
+              <div class="detail-block">
+                <span class="detail-label">Full Name</span>
+                <span class="detail-value" id="val-name">Aria Sharma</span>
+              </div>
+              <div class="detail-block">
+                <span class="detail-label">Email Address</span>
+                <span class="detail-value" id="val-email">aria.sharma@domain.com</span>
+              </div>
+              <div class="detail-block">
+                <span class="detail-label">Phone Number</span>
+                <span class="detail-value" id="val-phone">+1 (555) 019-2834</span>
+              </div>
+              <div class="detail-block">
+                <span class="detail-label">Account Created</span>
+                <span class="detail-value">July 7, 2026</span>
+              </div>
+            </div>
+
+            <!-- Edit Profile Form (Hidden by default) -->
+            <form id="profile-edit-form" class="space-y-md hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                <div class="input-group">
+                  <label class="input-label" for="edit-name">Full Name</label>
+                  <input class="input-field" type="text" id="edit-name" required value="Aria Sharma" />
+                </div>
+                <div class="input-group">
+                  <label class="input-label" for="edit-phone">Phone Number</label>
+                  <input class="input-field" type="tel" id="edit-phone" value="+1 (555) 019-2834" />
+                </div>
+              </div>
+              <div class="flex items-center gap-md pt-md">
+                <button type="submit" class="py-2.5 px-6 bg-secondary text-on-secondary font-button uppercase tracking-widest text-[11px] hover:bg-tertiary transition-colors shadow">Save Changes</button>
+                <button type="button" class="py-2.5 px-6 border border-outline text-secondary font-button uppercase tracking-widest text-[11px] hover:bg-surface-container-low transition-colors" id="profile-edit-cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- TAB: Order History -->
+          <div class="dash-tab-content space-y-lg hidden" id="tab-orders">
+            <h3 class="font-headline-sm text-secondary border-b border-outline-variant/20 pb-sm">Order History</h3>
+            <div class="space-y-lg" id="orders-list">
+              <!-- Populate dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- TAB: Wishlist -->
+          <div class="dash-tab-content space-y-lg hidden" id="tab-wishlist">
+            <h3 class="font-headline-sm text-secondary border-b border-outline-variant/20 pb-sm">My Wishlist</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-lg" id="wishlist-grid">
+              <!-- Populate dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- TAB: Saved Addresses -->
+          <div class="dash-tab-content space-y-lg hidden" id="tab-addresses">
+            <div class="flex justify-between items-center border-b border-outline-variant/20 pb-sm">
+              <h3 class="font-headline-sm text-secondary">Shipping Address</h3>
+              <button class="text-tertiary font-bold text-xs uppercase tracking-widest hover:underline flex items-center gap-1" id="address-edit-toggle">
+                <span class="material-symbols-outlined text-sm">edit</span>Edit Address
+              </button>
+            </div>
+            
+            <div class="p-md bg-surface-container-low border border-outline-variant/20 rounded" id="address-view-state">
+              <p class="font-bold text-secondary text-sm mb-1" id="addr-name-lbl">Aria Sharma</p>
+              <p class="text-sm text-on-surface-variant font-body-md" id="addr-line-lbl">128 Rue de L'Artisan, Suite 4B</p>
+              <p class="text-sm text-on-surface-variant font-body-md" id="addr-city-lbl">New York, NY 10013</p>
+              <p class="text-xs text-on-surface-variant/80 font-body-md mt-2" id="addr-phone-lbl">Phone: +1 (555) 019-2834</p>
+            </div>
+
+            <!-- Edit Address Form -->
+            <form id="address-edit-form" class="space-y-md hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                <div class="input-group">
+                  <label class="input-label" for="edit-addr-name">Receiver Name</label>
+                  <input class="input-field" type="text" id="edit-addr-name" required value="Aria Sharma" />
+                </div>
+                <div class="input-group">
+                  <label class="input-label" for="edit-addr-street">Street Address</label>
+                  <input class="input-field" type="text" id="edit-addr-street" required value="128 Rue de L'Artisan, Suite 4B" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                <div class="input-group">
+                  <label class="input-label" for="edit-addr-city">City, State, Zip</label>
+                  <input class="input-field" type="text" id="edit-addr-city" required value="New York, NY 10013" />
+                </div>
+                <div class="input-group">
+                  <label class="input-label" for="edit-addr-phone">Phone Contact</label>
+                  <input class="input-field" type="tel" id="edit-addr-phone" value="+1 (555) 019-2834" />
+                </div>
+              </div>
+              <div class="flex items-center gap-md pt-md">
+                <button type="submit" class="py-2.5 px-6 bg-secondary text-on-secondary font-button uppercase tracking-widest text-[11px] hover:bg-tertiary transition-colors shadow">Update Address</button>
+                <button type="button" class="py-2.5 px-6 border border-outline text-secondary font-button uppercase tracking-widest text-[11px] hover:bg-surface-container-low transition-colors" id="address-edit-cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- TAB: Payment Methods -->
+          <div class="dash-tab-content space-y-lg hidden" id="tab-payment">
+            <h3 class="font-headline-sm text-secondary border-b border-outline-variant/20 pb-sm">Payment Methods</h3>
+            <div class="p-md bg-surface-container-low border border-outline-variant/20 rounded flex items-center justify-between">
+              <div class="flex items-center gap-md">
+                <span class="material-symbols-outlined text-[32px] text-secondary">credit_card</span>
+                <div>
+                  <p class="font-bold text-secondary text-sm">Visa ending in 4242</p>
+                  <p class="text-xs text-on-surface-variant font-body-md">Expires 12 / 2028</p>
+                </div>
+              </div>
+              <span class="text-[9px] uppercase tracking-widest font-bold bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded">Default</span>
+            </div>
+          </div>
+
+          <!-- TAB: Notifications -->
+          <div class="dash-tab-content space-y-lg hidden" id="tab-notifications">
+            <h3 class="font-headline-sm text-secondary border-b border-outline-variant/20 pb-sm">Notifications</h3>
+            <div class="space-y-md text-sm text-on-surface-variant">
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input checked type="checkbox" class="rounded text-primary border-outline-variant focus:ring-primary bg-background w-4 h-4" />
+                <span>Email updates about new accessory drops</span>
+              </label>
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input checked type="checkbox" class="rounded text-primary border-outline-variant focus:ring-primary bg-background w-4 h-4" />
+                <span>SMS updates for tracking delivery status</span>
+              </label>
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="checkbox" class="rounded text-primary border-outline-variant focus:ring-primary bg-background w-4 h-4" />
+                <span>Product back-in-stock alerts</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- TAB: Security Settings -->
+          <div class="dash-tab-content space-y-lg hidden" id="tab-settings">
+            <h3 class="font-headline-sm text-secondary border-b border-outline-variant/20 pb-sm">Security & Password</h3>
+            <form id="password-change-form" class="space-y-md max-w-md">
+              <div class="input-group">
+                <label class="input-label" for="sec-old-pass">Current Password</label>
+                <input class="input-field" type="password" id="sec-old-pass" required placeholder="••••••••" />
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="sec-new-pass">New Password</label>
+                <input class="input-field" type="password" id="sec-new-pass" required placeholder="••••••••" />
+              </div>
+              <div class="input-group">
+                <label class="input-label" for="sec-confirm-pass">Confirm New Password</label>
+                <input class="input-field" type="password" id="sec-confirm-pass" required placeholder="••••••••" />
+              </div>
+              <button type="submit" class="py-2.5 px-6 bg-secondary text-on-secondary font-button uppercase tracking-widest text-[11px] hover:bg-tertiary transition-colors shadow pt-sm">Update Password</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Side Cart Drawer Overlay Backdrop -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-[100] hidden backdrop-blur-sm transition-opacity duration-300"></div>
+
+  <!-- Slide-out Cart Drawer -->
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-[450px] max-w-full bg-surface shadow-2xl z-[101] flex flex-col translate-x-full transition-transform duration-500 var(--easing)">
+    <!-- Cart Header -->
+    <div class="flex justify-between items-center p-lg border-b border-outline-variant/30 bg-surface">
+      <h3 class="font-headline-sm text-secondary">Shopping Bag</h3>
+      <button class="text-secondary hover:text-tertiary flex items-center transition-transform hover:rotate-90 duration-300" id="cart-close-btn" aria-label="Close Cart">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+    </div>
+    
+    <!-- Cart Items Scroll Area -->
+    <div class="flex-grow overflow-y-auto p-lg space-y-md" id="cart-items-container">
+      <!-- Empty Cart Message -->
+      <div class="text-center py-20 text-on-surface-variant flex flex-col items-center justify-center gap-sm">
+        <span class="material-symbols-outlined text-[48px] opacity-30">shopping_bag</span>
+        <p class="font-body-lg italic">Your bag is empty.</p>
+        <a class="text-tertiary hover:text-secondary font-button text-[12px] uppercase mt-sm inline-block" href="#shop" id="cart-shop-now-btn">Shop Now</a>
+      </div>
+    </div>
+    
+    <!-- Cart Summary Footer -->
+    <div class="border-t border-outline-variant/30 p-lg bg-surface-container-low" id="cart-summary-footer">
+      <!-- Gift Wrapping Progress -->
+      <div class="mb-md border border-outline-variant/20 bg-surface/40 p-sm rounded flex flex-col gap-1.5" id="gift-progress-container">
+        <div class="flex justify-between items-center text-[9px] uppercase font-bold tracking-widest text-primary">
+          <span id="gift-progress-lbl">Add $100.00 more for Free Premium Wrapping</span>
+          <span id="gift-progress-percent">0%</span>
+        </div>
+        <div class="h-1 bg-outline-variant/20 rounded overflow-hidden">
+          <div class="h-full bg-primary transition-all duration-300 animate-pulse" id="gift-progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center mb-sm">
+        <span class="text-on-surface-variant font-medium">Subtotal</span>
+        <span class="font-bold text-secondary text-lg" id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="flex justify-between items-center mb-md text-sm text-on-surface-variant/80">
+        <span>Standard Shipping</span>
+        <span class="font-medium text-emerald-700 uppercase tracking-widest text-[10px]">Free Drop</span>
+      </div>
+      <button class="w-full py-md bg-secondary text-on-secondary font-button uppercase tracking-[0.2em] hover:bg-tertiary transition-all duration-300 shadow-md" id="checkout-btn">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Quick View Modal -->
+  <div id="quickview-modal" class="fixed inset-0 bg-black/60 z-[200] hidden backdrop-blur-sm flex justify-center items-center p-md opacity-0 transition-opacity duration-300">
+    <div class="bg-surface max-w-[800px] w-full rounded shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 relative scale-95 transition-transform duration-300 border border-outline-variant/20 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
+      <button class="absolute top-4 right-4 z-30 text-secondary hover:text-tertiary w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center border border-outline-variant/20 transition-all hover:rotate-90 duration-300" id="quickview-close-btn" aria-label="Close Quick View">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+      
+      <div class="relative bg-surface-container-low aspect-square md:aspect-auto md:h-[500px] overflow-hidden">
+        <img id="quickview-img" class="w-full h-full object-cover" src="" alt="" />
+        <span class="absolute bottom-4 left-4 bg-surface-container/90 backdrop-blur-sm border border-outline-variant/30 text-[9px] uppercase tracking-widest font-bold px-3 py-1 rounded" id="quickview-category">Bracelets</span>
+      </div>
+      
+      <div class="p-lg md:p-xl flex flex-col justify-between h-full bg-surface">
+        <div>
+          <h3 class="font-display-lg text-secondary text-2xl md:text-3xl mb-sm leading-snug" id="quickview-title">Product Name</h3>
+          <p class="text-tertiary font-bold text-lg mb-md" id="quickview-price">$0.00</p>
+          <div class="h-px bg-outline-variant/30 w-full mb-md"></div>
+          <p class="text-on-surface-variant text-sm mb-lg leading-relaxed font-body-md" id="quickview-desc">Detailed product description...</p>
+          
+          <div class="mb-lg">
+            <h5 class="text-[10px] font-bold uppercase tracking-widest text-secondary mb-sm">Specifications</h5>
+            <ul class="text-xs text-on-surface-variant/80 space-y-sm font-body-md pl-4 list-disc" id="quickview-details">
+              <!-- Loaded dynamically -->
+            </ul>
+          </div>
+        </div>
+        
+        <div>
+          <div class="h-px bg-outline-variant/30 w-full mb-md"></div>
+          <button class="w-full py-3 bg-secondary text-on-secondary font-button text-xs uppercase tracking-widest hover:bg-tertiary transition-all duration-300 shadow-md" id="quickview-add-btn">
+            Add to Bag
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sleek Add to Cart Confirmation Toast -->
+  <div id="toast-notification" class="fixed bottom-6 left-6 z-[1000] bg-secondary text-on-secondary px-6 py-4 rounded shadow-xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-500 pointer-events-none border border-outline-variant/30">
+    <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+    <span id="toast-message" class="text-xs uppercase tracking-wider font-semibold">Added to shopping bag</span>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

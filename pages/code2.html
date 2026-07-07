@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop - The Pallu Stories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "tertiary": "#964824",
+                        "on-secondary-container": "#6f6257",
+                        "tertiary-fixed-dim": "#ffb597",
+                        "on-primary-container": "#4e3700",
+                        "secondary-fixed": "#f1dfd1",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fcf9f4",
+                        "secondary": "#695c51",
+                        "primary": "#775a19",
+                        "surface-container-low": "#f6f3ee",
+                        "surface-dim": "#dcdad5",
+                        "primary-fixed": "#ffdea5",
+                        "surface-bright": "#fcf9f4",
+                        "on-surface-variant": "#4e4639",
+                        "surface-variant": "#e5e2dd",
+                        "on-background": "#1c1c19",
+                        "tertiary-container": "#ec8d62",
+                        "inverse-primary": "#e9c176",
+                        "on-primary-fixed": "#261900",
+                        "surface-container": "#f0ede9",
+                        "on-secondary-fixed": "#231a11",
+                        "surface-tint": "#775a19",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary-container": "#682604",
+                        "secondary-fixed-dim": "#d4c4b6",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1c1c19",
+                        "outline-variant": "#d1c5b4",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#f1dfd1",
+                        "primary-container": "#c5a059",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#50453b",
+                        "background": "#fcf9f4",
+                        "primary-fixed-dim": "#e9c176",
+                        "on-primary": "#ffffff",
+                        "outline": "#7f7667",
+                        "surface-container-highest": "#e5e2dd",
+                        "surface-container-high": "#ebe8e3",
+                        "on-primary-fixed-variant": "#5d4201",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#31302d",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#77320e",
+                        "inverse-on-surface": "#f3f0eb",
+                        "on-tertiary-fixed": "#360f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin_mobile": "16px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "xxl": "80px",
+                        "xs": "4px",
+                        "container_max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Montserrat"],
+                        "headline-sm": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Montserrat"],
+                        "button": ["Montserrat"],
+                        "label-caps": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400" }],
+                        "button": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #fcf9f4; color: #1c1c19; }
+        .hover-lift { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .hover-lift:hover { transform: translateY(-4px); }
+        .glass-overlay { background: rgba(249, 246, 241, 0.8); backdrop-filter: blur(8px); }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm shadow-secondary/5 border-b border-outline-variant/30">
+<div class="flex justify-between items-center px-lg py-md max-w-container_max mx-auto">
+<div class="flex space-x-lg font-body-md text-body-md tracking-wide hidden md:flex">
+<a class="text-primary border-b border-primary pb-1 font-medium hover:text-tertiary transition-all duration-300" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-tertiary transition-all duration-300" href="#">Collections</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-tertiary transition-all duration-300" href="#">Craftsmanship</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 hover:text-tertiary transition-all duration-300" href="#">Our Story</a>
+</div>
+<a class="font-display-lg text-display-lg text-primary dark:text-primary-fixed italic md:absolute md:left-1/2 md:-translate-x-1/2" href="#">
+                The Pallu Stories
+            </a>
+<div class="flex items-center space-x-md text-primary dark:text-primary-fixed">
+<button aria-label="Search" class="transition-transform duration-200 active:scale-95 hover:text-tertiary transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Profile" class="transition-transform duration-200 active:scale-95 hover:text-tertiary transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="Favorites" class="transition-transform duration-200 active:scale-95 hover:text-tertiary transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="Cart" class="transition-transform duration-200 active:scale-95 hover:text-tertiary transition-all duration-300 relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-tertiary text-on-tertiary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-xxl">
+<!-- Category Header -->
+<section class="bg-surface-container-low py-xl px-margin_mobile md:px-lg relative overflow-hidden">
+<div class="max-w-container_max mx-auto relative z-10 text-center">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-sm">All Creations</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Discover our full collection of handcrafted soft luxury pieces, where artisanal tradition meets modern elegance.</p>
+</div>
+<!-- Decorative blur -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-full bg-secondary-container/30 blur-[100px] -z-10 rounded-full pointer-events-none"></div>
+</section>
+<!-- Shop Layout -->
+<section class="max-w-container_max mx-auto px-margin_mobile md:px-lg py-xl flex flex-col md:flex-row gap-xl">
+<!-- Filter Sidebar -->
+<aside class="w-full md:w-64 flex-shrink-0 space-y-lg">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md pb-xs border-b border-outline-variant/50">Categories</h3>
+<ul class="space-y-sm font-body-md text-body-md text-on-surface-variant">
+<li><label class="flex items-center space-x-sm cursor-pointer group"><input class="rounded text-primary border-outline-variant focus:ring-primary bg-surface group-hover:border-primary transition-colors" type="checkbox"/><span class="group-hover:text-primary transition-colors">All</span></label></li>
+<li><label class="flex items-center space-x-sm cursor-pointer group"><input checked="" class="rounded text-primary border-outline-variant focus:ring-primary bg-surface group-hover:border-primary transition-colors" type="checkbox"/><span class="group-hover:text-primary transition-colors font-medium text-primary">Bracelets</span></label></li>
+<li><label class="flex items-center space-x-sm cursor-pointer group"><input class="rounded text-primary border-outline-variant focus:ring-primary bg-surface group-hover:border-primary transition-colors" type="checkbox"/><span class="group-hover:text-primary transition-colors">Purses</span></label></li>
+<li><label class="flex items-center space-x-sm cursor-pointer group"><input class="rounded text-primary border-outline-variant focus:ring-primary bg-surface group-hover:border-primary transition-colors" type="checkbox"/><span class="group-hover:text-primary transition-colors">Handbags</span></label></li>
+<li><label class="flex items-center space-x-sm cursor-pointer group"><input class="rounded text-primary border-outline-variant focus:ring-primary bg-surface group-hover:border-primary transition-colors" type="checkbox"/><span class="group-hover:text-primary transition-colors">Accessories</span></label></li>
+</ul>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md pb-xs border-b border-outline-variant/50">Price Range</h3>
+<div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant mb-sm">
+<span>$0</span>
+<span>$500+</span>
+</div>
+<input class="w-full h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" max="500" min="0" type="range" value="250"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md pb-xs border-b border-outline-variant/50">Colors</h3>
+<div class="flex flex-wrap gap-sm">
+<button aria-label="Beige" class="w-8 h-8 rounded-full border border-outline bg-[#F5F5DC]"></button>
+<button aria-label="Espresso" class="w-8 h-8 rounded-full border border-outline bg-[#4A3F35] ring-2 ring-primary ring-offset-2 ring-offset-surface"></button>
+<button aria-label="Sand" class="w-8 h-8 rounded-full border border-outline bg-[#EADDCA]"></button>
+<button aria-label="Black" class="w-8 h-8 rounded-full border border-outline bg-[#1C1C19]"></button>
+<button aria-label="Gold" class="w-8 h-8 rounded-full border border-outline bg-[#D4AF37]"></button>
+</div>
+</div>
+<button class="w-full py-sm border border-primary text-primary font-button text-button uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors mt-lg">Apply Filters</button>
+</aside>
+<!-- Product Grid Area -->
+<div class="flex-grow">
+<!-- Toolbar -->
+<div class="flex flex-col sm:flex-row justify-between items-center mb-lg gap-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Showing 1–12 of 36 results</p>
+<div class="flex items-center gap-md w-full sm:w-auto">
+<div class="relative flex-grow sm:flex-grow-0">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[20px]" data-icon="search">search</span>
+<input class="w-full sm:w-64 pl-10 pr-4 py-2 border-b border-outline-variant bg-transparent font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-on-surface-variant/50" placeholder="Search products..." type="text"/>
+</div>
+<select class="border-b border-outline-variant bg-transparent font-body-md text-body-md text-on-surface py-2 pr-8 focus:outline-none focus:border-primary transition-colors cursor-pointer">
+<option>Sort by: Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Popularity</option>
+</select>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-xl">
+<!-- Product Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low mb-md">
+<img alt="Woven Leather Bracelet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A highly detailed close-up product shot of a handcrafted leather bracelet in deep espresso brown, resting on a textured sand-colored linen cloth. The lighting is soft, warm, and natural, highlighting the intricate stitching and premium material quality. Minimalist and elegant composition, luxurious boutique editorial aesthetic, light mode styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpt6thTu2Ow8qwkl0WiesT-zplMhdEZWvw9GT1WkhzO8HBNPv8eI7VkoTG_v74_pJUjcFpAoCpxygJxM4MD5igDwRP8deFwZ1o7tS3GIc_GXiYKKUAMrhEPXaV31_wYJI8OPV9vJGsap740nD7nn_Ncnywk0t7hF0bnHAIJ4dPHro_Ve_rl3beKS4_Ht2RxG7weDdL5o4HGVZWOpAUr6Cu7ePom9kpbjj6A14ulJMNQ_2Y7u6O0GoCeQ"/>
+<!-- Quick View Overlay -->
+<div class="absolute inset-0 bg-surface/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-primary text-on-primary font-button text-button px-lg py-sm tracking-widest uppercase hover:bg-on-primary-fixed-variant transition-colors shadow-lg">Quick View</button>
+</div>
+<div class="absolute top-sm right-sm flex flex-col gap-sm">
+<button aria-label="Add to favorites" class="w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<!-- Tags -->
+<div class="absolute top-sm left-sm flex flex-col gap-xs">
+<span class="bg-secondary-container px-2 py-1 font-label-caps text-label-caps text-on-secondary-container">New</span>
+</div>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Bracelets</p>
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-xs group-hover:text-primary transition-colors">The Artisan Weave</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">$125.00</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low mb-md">
+<img alt="Canvas Handbag" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A front-facing lifestyle shot of a minimalist ivory-colored canvas handbag with muted gold hardware details. The bag is placed on a smooth, pale stone pedestal against a soft white background. Soft, diffused lighting enhances the high-end, soft luxury aesthetic, casting a delicate ambient shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMgNhing6kf0anEL904wROB5A86u6EX576aLMD8zUfwgienAdIWT39Bqu1EZOZru__m--X-5Iel-BAp7Eg0ivVF9qYQaQoA9Mi1W9X9KRVZ-tRY63Ycz0i3aPfmy0EFeEGDplPMFLvzWFqIVGJ3HDeX_vQo87jR1ioF8h04WSfCVXdEaj0k8SdnovmqVVbnwl3FjbzjGeckP_Vqrb7OoziDZfsvtNk5T5QlK8wPGX_8-OzLB1zQjJ9AA"/>
+<div class="absolute inset-0 bg-surface/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-primary text-on-primary font-button text-button px-lg py-sm tracking-widest uppercase hover:bg-on-primary-fixed-variant transition-colors shadow-lg">Quick View</button>
+</div>
+<div class="absolute top-sm right-sm flex flex-col gap-sm">
+<button aria-label="Add to favorites" class="w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite" data-weight="fill">favorite</span>
+</button>
+</div>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Handbags</p>
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-xs group-hover:text-primary transition-colors">Ivory Canvas Tote</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">$280.00</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low mb-md">
+<img alt="Gold Leather Purse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="An editorial photo of a small, structured purse in muted gold leather, casually draped over a minimalist wooden chair back. The scene is bright and airy with organic sunlight filtering through a nearby window, creating a serene, warm, tactile visual style fitting a luxury boutique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgrEIIxKkI5F8XSypQEY6zjMNgkh_Dc_q-fqtzSLDJrKPzMCBNQZNqsG1HTeBvixj9jjuA5i_M_cWbw3Jmd4GmZ7TZ2OE1M9xnh1UFekU7h-TAe4hNncK_VGVpBLw_IOkRmnSkeUI8KotbWHbVIFQOqf883zhJdDvgRo4KNP_C9dq0KeCEbBIwgx3PMnpTu29GbMKLG8E_un-4sFUyfNrW2tl7u9bUa-3lyy-9w3h--pSq4-zYS3Mkag"/>
+<div class="absolute inset-0 bg-surface/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-primary text-on-primary font-button text-button px-lg py-sm tracking-widest uppercase hover:bg-on-primary-fixed-variant transition-colors shadow-lg">Quick View</button>
+</div>
+<div class="absolute top-sm right-sm flex flex-col gap-sm">
+<button aria-label="Add to favorites" class="w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Purses</p>
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-xs group-hover:text-primary transition-colors">The Golden Hour Clutch</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">$195.00</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container-low mb-md">
+<img alt="Silk Scarf" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A top-down view of an elegant silk scarf featuring subtle geometric patterns in shades of sand and deep espresso. The scarf is styled loosely coiled on a pristine white marble surface. Lighting is bright, soft, and shadow-less, emphasizing the soft luxury and tactile crafted detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTej7nTZM56iYnwlFZ9YNOqukVU36vhmW1aF43q5rk-ZgJCPRO0Nueu1BZuqdmQv7K_t3sYm1MFtao9Szvyx_4b6eLeGJbvkrVoD0SM4w42MgNeUqeoOJWMLqsLFdP4PsuItekXSMFs7FNXuPK6vLTJfAzZNRfStAZuBuJi1Bq7CvTzghjJHP3KRZ6YGR0CpCVOEEHAO2F1GKTTsAgbpZZWmGJEpzPSFq7MVSvD768vhMoO3aLRNQ9qg"/>
+<div class="absolute inset-0 bg-surface/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<button class="bg-primary text-on-primary font-button text-button px-lg py-sm tracking-widest uppercase hover:bg-on-primary-fixed-variant transition-colors shadow-lg">Quick View</button>
+</div>
+<div class="absolute top-sm right-sm flex flex-col gap-sm">
+<button aria-label="Add to favorites" class="w-8 h-8 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+<div class="text-center">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Accessories</p>
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-xs group-hover:text-primary transition-colors">Dune Silk Scarf</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">$85.00</p>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-xxl flex justify-center items-center space-x-md font-body-md text-body-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<div class="flex space-x-sm">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary text-on-primary font-medium">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-variant transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-variant transition-colors">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-on-surface-variant">...</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-xxl bg-secondary-container dark:bg-surface-container-high grid grid-cols-1 md:grid-cols-4 gap-lg px-lg py-xl max-w-container_max mx-auto text-on-secondary-container dark:text-on-surface font-body-md text-body-md">
+<div class="md:col-span-1">
+<h2 class="font-display-lg text-display-lg text-tertiary dark:text-tertiary-fixed-dim italic mb-md">The Pallu Stories</h2>
+<p class="text-sm opacity-90">© 2024 The Pallu Stories. Handcrafted with intention.</p>
+</div>
+<div class="md:col-span-3 flex flex-wrap gap-lg justify-start md:justify-end">
+<a class="text-on-secondary-fixed-variant hover:text-tertiary hover:translate-x-1 transition-transform duration-300 opacity-90 hover:opacity-100" href="#">Sustainability</a>
+<a class="text-on-secondary-fixed-variant hover:text-tertiary hover:translate-x-1 transition-transform duration-300 opacity-90 hover:opacity-100" href="#">Shipping &amp; Returns</a>
+<a class="text-on-secondary-fixed-variant hover:text-tertiary hover:translate-x-1 transition-transform duration-300 opacity-90 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-on-secondary-fixed-variant hover:text-tertiary hover:translate-x-1 transition-transform duration-300 opacity-90 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-on-secondary-fixed-variant hover:text-tertiary hover:translate-x-1 transition-transform duration-300 opacity-90 hover:opacity-100" href="#">FAQ</a>
+</div>
+</footer>
+</body></html>
