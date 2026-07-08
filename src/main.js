@@ -392,7 +392,7 @@ const handleHeaderShrink = () => {
 // SPA Routing Manager (Transitions view toggle)
 // ----------------------------------------------------
 
-const switchView = (targetRoute) => {
+const switchView = (targetRoute, preventScrollReset = false) => {
   state.activeRoute = targetRoute;
   
   // Close active overlay dropdowns or drawers
@@ -412,8 +412,10 @@ const switchView = (targetRoute) => {
     }
   });
 
-  // Reset scroll position on route switch
-  window.scrollTo({ top: 0, behavior: 'auto' });
+  // Reset scroll position on route switch only if not target scrolling
+  if (!preventScrollReset) {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
 
   // Custom tab actions
   if (targetRoute === 'dashboard') {
@@ -431,14 +433,35 @@ const setupRouter = () => {
   // Catch custom route triggers
   document.querySelectorAll('.route-trigger').forEach(trigger => {
     trigger.addEventListener('click', (e) => {
-      e.preventDefault();
       const route = trigger.dataset.route;
+      const href = trigger.getAttribute('href');
       
-      // Route protection for dashboard
-      if (route === 'dashboard' && !currentUser) {
-        switchView('login');
-      } else {
-        switchView(route);
+      if (route) {
+        e.preventDefault();
+        
+        // Route protection for dashboard
+        if (route === 'dashboard' && !currentUser) {
+          switchView('login');
+        } else {
+          const hasAnchor = href && href.startsWith('#') && href !== '#home' && href !== '#';
+          switchView(route, hasAnchor);
+          
+          if (href) {
+            if (href === '#home' || href === '#') {
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 120);
+            } else if (href.startsWith('#')) {
+              const targetId = href.substring(1);
+              const targetEl = document.getElementById(targetId);
+              if (targetEl) {
+                setTimeout(() => {
+                  targetEl.scrollIntoView({ behavior: 'smooth' });
+                }, 120);
+              }
+            }
+          }
+        }
       }
     });
   });
