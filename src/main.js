@@ -1,5 +1,5 @@
 // Path to the new premium generated hero image
-const HERO_IMAGE_PATH = "hero_accessories.jpg";
+const HERO_IMAGE_PATH = `${import.meta.env.BASE_URL}hero_accessories.jpg`;
 
 // Elements for canvas scroll & cursor parallax
 const canvas = document.getElementById('scroll-canvas');
@@ -209,11 +209,16 @@ const resizeCanvas = () => {
 
 // Canvas drawing loop
 const drawFrame = (fraction, mouseX, mouseY) => {
-  if (!heroImage || !heroImage.complete) return;
-
   const rect = canvas.parentElement.getBoundingClientRect();
   const canvasWidth = rect.width;
   const canvasHeight = rect.height;
+
+  if (!heroImage || !heroImage.complete || heroImage.naturalWidth === 0) {
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    context.fillStyle = "#f3ede2";
+    context.fillRect(0, 0, canvasWidth, canvasHeight);
+    return;
+  }
   
   const imgWidth = heroImage.naturalWidth;
   const imgHeight = heroImage.naturalHeight;
@@ -251,46 +256,67 @@ const drawFrame = (fraction, mouseX, mouseY) => {
 };// Preload canvas hero image
 const preloadImages = () => {
   return new Promise((resolve) => {
+    // Set up a 2.5-second fail-safe timeout
+    const forceLoadTimeout = setTimeout(() => {
+      console.warn("Preloader timeout triggered. Forcing interactive state.");
+      completePreloader();
+    }, 2500);
+
     let progress = 0;
     const interval = setInterval(() => {
       progress += 10;
-      progressBar.style.width = `${progress}%`;
-      if (loaderPercent) loaderPercent.textContent = `${progress}%`;
-      if (progress >= 50) clearInterval(interval);
-    }, 45);
+      if (progress > 50) progress = 50;
+      updateLoadingUI(progress);
+      if (progress === 50) clearInterval(interval);
+    }, 40);
+
+    const updateLoadingUI = (val) => {
+      if (progressBar) progressBar.style.width = `${val}%`;
+      if (loaderPercent) loaderPercent.textContent = `${val}%`;
+    };
+
+    let isCompleted = false;
+    const completePreloader = () => {
+      if (isCompleted) return;
+      isCompleted = true;
+      
+      clearTimeout(forceLoadTimeout);
+      clearInterval(interval);
+      
+      // Force loading bar to 100% instantly
+      updateLoadingUI(100);
+      
+      // Animate fade-out and enable overflow scroll
+      if (preloader) {
+        preloader.classList.add('fade-out');
+      }
+      document.body.style.overflow = 'auto';
+      resolve();
+    };
 
     heroImage = new Image();
     
-    // Bind onload first
     heroImage.onload = () => {
+      if (isCompleted) return;
       clearInterval(interval);
       let finishProgress = progress;
       const finishInterval = setInterval(() => {
         finishProgress += 10;
-        if (finishProgress > 100) finishProgress = 100;
-        progressBar.style.width = `${finishProgress}%`;
-        if (loaderPercent) loaderPercent.textContent = `${finishProgress}%`;
-        
-        if (finishProgress === 100) {
+        if (finishProgress >= 100) {
+          finishProgress = 100;
           clearInterval(finishInterval);
-          setTimeout(() => {
-            preloader.classList.add('fade-out');
-            document.body.style.overflow = 'auto';
-            resolve();
-          }, 600);
+          completePreloader();
+        } else {
+          updateLoadingUI(finishProgress);
         }
       }, 20);
     };
     
-    // Bind onerror first
-    heroImage.onerror = () => {
-      clearInterval(interval);
-      preloader.classList.add('fade-out');
-      document.body.style.overflow = 'auto';
-      resolve();
+    heroImage.onerror = (e) => {
+      console.error("Hero image failed to load. Resuming layout fallback.", e);
+      completePreloader();
     };
     
-    // Set src AFTER binding listeners!
     heroImage.src = HERO_IMAGE_PATH;
   });
 };
